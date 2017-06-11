@@ -6,6 +6,13 @@ using System.Threading.Tasks;
 
 namespace BankProject
 {
+    enum AccountTypes
+    {
+        Checking,
+        Savings
+    }
+
+
     /// <summary>
     /// 
     /// This calss represents a bank account
@@ -31,7 +38,7 @@ namespace BankProject
             EmailAddress = emailAddress;
         }
 
-        public Account(string emailAddress, string typeOfAccount) : this(emailAddress)
+        public Account(string emailAddress, AccountTypes typeOfAccount) : this(emailAddress)
         {
             TypeOfAccount = typeOfAccount;
         }
@@ -52,7 +59,7 @@ namespace BankProject
 
         public decimal Balance { get; private set; }
 
-        public string TypeOfAccount { get; set; }
+        public AccountTypes TypeOfAccount { get; set; }
 
         #endregion
 

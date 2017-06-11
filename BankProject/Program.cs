@@ -30,8 +30,14 @@ namespace BankProject
                     case "1":
                         Console.Write("Email Address: ");
                         var emailAddress = Console.ReadLine();
-                        Console.Write("Type of account: ");
-                        var typeOfAccount = Console.ReadLine();
+                        Console.WriteLine("Please choose from the type of account: ");
+                        var accountTypes = Enum.GetNames(typeof(AccountTypes));
+                        for (int i = 0; i< accountTypes.Length; i++)
+                        {
+                            Console.WriteLine($"{i+1}.{accountTypes[i]}");
+
+                        }
+                        var typeOfAccount =(AccountTypes)(Convert.ToInt32(Console.ReadLine())-1);
                         Console.Write("Amount: ");
                         var amount = Convert.ToDecimal(Console.ReadLine());
 
@@ -40,16 +46,13 @@ namespace BankProject
 
                         break;
                     case "2":
+                        PrintAllAccounts();
                         break;
                     case "3":
+                        PrintAllAccounts();
                         break;
                     case "4":
-                        var accounts = Bank.GetAllAccounts();
-                        foreach(var a in accounts)
-                        {
-                            Console.WriteLine($"AccountNumber: {a.AccountNumber}, Type: { a.TypeOfAccount}, Balance: { a.Balance:C}, Email Address: { a.EmailAddress}");
-
-                        }
+                        PrintAllAccounts();
 
                         break;
 
@@ -57,6 +60,7 @@ namespace BankProject
                     default:
                         break;
                 }
+
 
 
                 //var account = Bank.CreateAccount("test@test.com", 100, "Saving");
@@ -75,6 +79,16 @@ namespace BankProject
                 ////account2.EmailAddress = "test2@test.com";
                 ////account2.TypeOfAccount = "Savings";
                 //Console.WriteLine($"AccountNumber: {account2.AccountNumber}, Type: { account2.TypeOfAccount}, Balance: { account2.Balance:C}, Email Address: { account2.EmailAddress}");
+            }
+        }
+
+        private static void PrintAllAccounts()
+        {
+            var accounts = Bank.GetAllAccounts();
+            foreach (var a in accounts)
+            {
+                Console.WriteLine($"AccountNumber: {a.AccountNumber}, Type: { a.TypeOfAccount}, Balance: { a.Balance:C}, Email Address: { a.EmailAddress}");
+
             }
         }
     }

@@ -11,7 +11,7 @@ namespace BankProject
         private static List<Account> accounts = new List<Account>();
 
 
-        public static Account CreateAccount(string emailAddress, decimal amount, string typeOfAccount)
+        public static Account CreateAccount(string emailAddress, decimal amount, AccountTypes typeOfAccount)
         {
             var account = new Account(emailAddress, typeOfAccount);
             account.Deposit(amount);
