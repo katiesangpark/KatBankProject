@@ -44,6 +44,13 @@ namespace BankProject
                     case "3":
                         break;
                     case "4":
+                        var accounts = Bank.GetAllAccounts();
+                        foreach(var a in accounts)
+                        {
+                            Console.WriteLine($"AccountNumber: {a.AccountNumber}, Type: { a.TypeOfAccount}, Balance: { a.Balance:C}, Email Address: { a.EmailAddress}");
+
+                        }
+
                         break;
 
 
